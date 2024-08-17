@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(225deg, silver, #1d1d1d);
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.todo-app{
+    width: 90%;
+    max-width: 540px;
+    background: #fff;
+    margin: 50px 0 20px;
+    padding: 20px 30px 70px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px black;
+}
+
+.todo-app h2{
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.todo-app h2 span{
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    font-size: 2rem;
+    color: maroon;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: #edeef0;
+    border: 2px solid maroon;
+    border-radius: 30px;
+    padding-left: 20px;
+    margin-bottom: 25px;
+}
+
+input#input-box{
+    max-width: 70%;
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: maroon;
+    padding: 10px;
+    font-size: 16px;
+}
+
+button#btn{
+    max-width: 30%;
+    border: none;
+    outline: 2px solid maroon;
+    padding: 16px 50px;
+    background: maroon;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0 30px 30px 0;
+}
+
+button#btn:hover{
+    background: #570101;
+}
+
+ul#list-container li{
+    list-style: none;
+    font-size: 17px;
+    padding: 12px 8px 12px 50px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    /* overflow: hidden; */
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+
+ul#list-container li::before{
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 8px;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    background: url(./circle.svg);
+}
+
+ul#list-container li.checked{
+    text-decoration: line-through;
+    color: #555;
+}
+
+ul#list-container li.checked::before{
+    background: url(./circle-checked.svg);
+}
+
+ul#list-container li span.remove,
+ul#list-container li span.edit{
+    position: absolute;
+    top: 5px;
+    width: 40px;
+    height: 40px;
+    color: #555;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ul#list-container li span.remove{
+    right: 0;
+    font-size: 25px;
+}
+
+ul#list-container li span.edit{
+    right: 40px;
+}
+
+ul#list-container li span:hover{
+    background: #edeef0;
+}
+
+
+ul#list-container li .tooltip {
+    position: absolute;
+    background: #333;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    top: -20px;
+}
+
+ul#list-container li .remove:hover + .tooltip,
+ul#list-container li .edit:hover + .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+ul#list-container li .tooltip.remove-tooltip {
+    right: 0px;
+}
+
+ul#list-container li .tooltip.edit-tooltip {
+    right: 45px;
+}
+
+
+@media screen and (max-width: 576px) {
+    button#btn{
+        padding: 16px 30px;
+    }
+
+    input#input-box{
+        padding: 5px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    
+    .todo-app{
+        padding: 20px 10px 70px;
+        margin-top: 10px;
+    }
+
+    .todo-app h2{
+        font-size: 18px;
+    }
+
+    .row{
+        padding-left: 10px;
+    }
+
+    button#btn{
+        padding: 10px 20px;
+        font-weight: normal;
+    }
+
+    input#input-box{
+        padding: 0px;
+    }
+}
+
+@media screen and (max-width: 250px){
+    button#btn{
+        padding: 5px;
+        font-size: 10px;
+    }
+
+    ul#list-container li span.remove,
+    ul#list-container li span.edit{
+       width: 25px;
+       height: 25px; 
+       top: 11px;
+    }
+    
+    ul#list-container li span.edit{
+        right: 20px;
+    }
+
+    ul#list-container li .tooltip.edit-tooltip {
+        right: 25px;
+    }
+}
